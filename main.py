@@ -1,0 +1,12 @@
+shoes = [{"name": "Air Jordan 1", "category": "Sneaker", "price": 125},
+         {"name": "Vans", "category": "Sneaker", "price": 65},
+         {"name": "Converse", "category": "Sneaker", "price": 60},
+         {"name": "Becca Flat", "category": "Dress Shoe", "price": 120},
+         {"name": "Cole Haan ", "category": "Dress Shoe", "price": 158},
+         {"name": "Gucci", "category": "Dress Shoe", "price": 890},
+         {"name": "Birkenstock", "category": "Sandal", "price": 145},
+         {"name": "Crocs", "category": "Sandal", "price": 50},
+         {"name": "Olukai ", "category": "Sandal", "price": 75},
+         {"name": "Orthofeet", "category": "Indoor Shoe", "price": 90},
+         {"name": "Diodora", "category": "Indoor Shoe", "price": 115},
+         {"name": "Cloud Slides", "category": "Indoor Shoe", "price": 27}]
