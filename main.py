@@ -10,3 +10,11 @@ shoes = [{"name": "Air Jordan 1", "category": "Sneaker", "description": "BK and 
          {"name": "Orthofeet", "category": "Indoor Shoe", "description": "BK Louise Stretch Knit", "price": 90},
          {"name": "Diodora", "category": "Indoor Shoe", "description": "WH, OR, and TUR Futsal Boots", "price": 115},
          {"name": "Cloud Slides", "category": "Indoor Shoe", "description": "YL Original", "price": 27}]
+
+
+class Product:
+    def __init__(self, name, category, description, price):
+        self.name = name
+        self.category = category
+        self.description = description
+        self.price = price
