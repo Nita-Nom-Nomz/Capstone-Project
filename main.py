@@ -1,12 +1,18 @@
-shoes = [{"name": "Air Jordan 1", "category": "Sneaker", "description": "BK and WH High Top", "price": 125},
-         {"name": "Vans", "category": "Sneaker", "description": "BK and WH Sk8 High Top", "price": 65},
-         {"name": "Converse", "category": "Sneaker", "description": "BK and WH Chuck Taylor Low Top", "price": 60},
-         {"name": "Becca Flat", "category": "Dress Shoe", "description": "BK Pointed Toe Slingback Flat", "price": 120},
-         {"name": "Cole Haan ", "category": "Dress Shoe", "description": "BR Classic Penny Loafer", "price": 158},
-         {"name": "Gucci", "category": "Dress Shoe", "description": "BK Leather Lace-Up with Double G", "price": 890},
-         {"name": "Birkenstock", "category": "Sandal", "description": "BK Suede Leather", "price": 145},
-         {"name": "Crocs", "category": "Sandal", "description": "Hello Kitty Stomp Slide", "price": 50},
-         {"name": "Olukai ", "category": "Sandal", "description": "Dark Java Ohana", "price": 75},
-         {"name": "Orthofeet", "category": "Indoor Shoe", "description": "BK Louise Stretch Knit", "price": 90},
-         {"name": "Diodora", "category": "Indoor Shoe", "description": "WH, OR, and TUR Futsal Boots", "price": 115},
-         {"name": "Cloud Slides", "category": "Indoor Shoe", "description": "YL Original", "price": 27}]
+def calculate_totals(subtotal, tax_rate):
+    sales_tax = subtotal * tax_rate
+
+    grand_total = subtotal + sales_tax
+
+    subtotal = round(subtotal, 2)
+    sales_tax = round(sales_tax, 2)
+    grand_total = round(grand_total, 2)
+
+    return subtotal, sales_tax, grand_total
+
+
+subtotal = 100.0
+tax_rate = 0.08
+subtotal, sales_tax, grand_total = calculate_totals(subtotal, tax_rate)
+print("Subtotal:", subtotal)
+print("Sales Tax:", sales_tax)
+print("Grand Total:", grand_total)
