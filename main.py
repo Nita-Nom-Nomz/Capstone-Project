@@ -26,7 +26,7 @@ total_items = []  # will hold selected items from menu in this list
 # what was added for menu selection start
 def display_menu(shoes):
     for select, shoe in enumerate(shoes, 1):
-        print(f"{select}. {shoe.name} - ${shoe.price}")
+        print(f"{select}. {shoe.name} - {shoe.category} - {shoe.description} - ${shoe.price}")
 
 
 display_menu(shoes)
