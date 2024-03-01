@@ -1,3 +1,4 @@
+# Shenedia's Code
 class Shoes:
     def __init__(self, name, category, description, price):
         self.name = name
@@ -20,7 +21,7 @@ shoes = [{"name": "Air Jordan 1", "category": "Sneaker", "description": "BK and 
          {"name": "Cloud Slides", "category": "Indoor Shoe", "description": "YL Original", "price": 27}]
 subtotal = 20
 
-
+# Clay's Code ================================================================================================================================
 def payment_type():
     payment = input("Select a payment type: cash, credit, check ")
     while True:
@@ -81,7 +82,7 @@ def payment_type():
             break
         else:
             payment = input("Invalid response. Please enter: 'cash', 'credit', or 'check'")
-
+# Jay's Code ================================================================================================================================
             def calculate_totals(subtotal, tax_rate):
                 sales_tax = subtotal * tax_rate
 
