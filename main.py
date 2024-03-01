@@ -1,5 +1,5 @@
-# Shenedia's Code
-class Shoes:
+# Shenedia code start ===============================================================================================
+class Shoe:
     def __init__(self, name, category, description, price):
         self.name = name
         self.category = category
@@ -7,21 +7,78 @@ class Shoes:
         self.price = price
 
 
-shoes = [{"name": "Air Jordan 1", "category": "Sneaker", "description": "BK and WH High Top", "price": 125},
-         {"name": "Vans", "category": "Sneaker", "description": "BK and WH Sk8 High Top", "price": 65},
-         {"name": "Converse", "category": "Sneaker", "description": "BK and WH Chuck Taylor Low Top", "price": 60},
-         {"name": "Becca Flat", "category": "Dress Shoe", "description": "BK Pointed Toe Slingback Flat", "price": 120},
-         {"name": "Cole Haan ", "category": "Dress Shoe", "description": "BR Classic Penny Loafer", "price": 158},
-         {"name": "Gucci", "category": "Dress Shoe", "description": "BK Leather Lace-Up with Double G", "price": 890},
-         {"name": "Birkenstock", "category": "Sandal", "description": "BK Suede Leather", "price": 145},
-         {"name": "Crocs", "category": "Sandal", "description": "Hello Kitty Stomp Slide", "price": 50},
-         {"name": "Olukai ", "category": "Sandal", "description": "Dark Java Ohana", "price": 75},
-         {"name": "Orthofeet", "category": "Indoor Shoe", "description": "BK Louise Stretch Knit", "price": 90},
-         {"name": "Diodora", "category": "Indoor Shoe", "description": "WH, OR, and TUR Futsal Boots", "price": 115},
-         {"name": "Cloud Slides", "category": "Indoor Shoe", "description": "YL Original", "price": 27}]
+shoes = [Shoe("Air Jordan 1", "Sneaker", "BK and WH High Top", 125),
+         Shoe("Vans", "Sneaker", "BK and WH Sk8 High Top", 65),
+         Shoe("Converse", "Sneaker", "BK and WH Chuck Taylor Low Top", 60),
+         Shoe("Becca Flat", "Dress Shoe", "BK Pointed Toe Slingback Flat", 120),
+         Shoe("Cole Haan", "Dress Shoe", "BR Classic Penny Loafer", 158),
+         Shoe("Gucci", "Dress Shoe", "BK Leather Lace-Up with Double G", 890),
+         Shoe("Birkenstock", "Sandal", "BK Suede Leather", 145),
+         Shoe("Crocs", "Sandal", "Hello Kitty Stomp Slide", 50),
+         Shoe("Olukai1", "Sandal", "Dark Java Ohana", 75),
+         Shoe("Orthofeet", "Indoor Shoe", "BK Louise Stretch Knit", 90),
+         Shoe("Diodora", "Indoor Shoe", "WH, OR, and TUR Futsal Boots", 115),
+         Shoe("Cloud Slides", "Indoor Shoe", "YL Original", 27)]
+
+total_items = []  # will hold selected items from menu in this list
+
+
+# what was added for menu selection start
+def display_menu(shoes):
+    for select, shoe in enumerate(shoes, 1):
+        print(f"{select}. {shoe.name} - ${shoe.price}")
+
+
+display_menu(shoes)
+
+
+def take_order(shoes):
+    while True:
+        items = input("Please select the item by number you wish to purchase or type 'done' when finished.\n>")
+        if items.lower == 'done':
+            break
+        else:
+            try:
+                item_number = int(items)
+                if 1 <= item_number <= len(shoes):
+                    total_items.append(shoes[item_number - 1])
+                    print(f"{shoes[item_number - 1].name} added to cart.")
+                else:
+                    print("Invalid item number. Please select a valid item.")
+            except ValueError:
+                print("Invalid input. Please enter a number or 'done'.")
+
+
+take_order(shoes)
+#  what was added for menu selection end
+# Shenedia code end=============================================================================================
+
+# Jay's Code start ====================================================================================================
 subtotal = 20
 
-# Clay's Code ================================================================================================================================
+
+def calculate_totals(subtotal, tax_rate):
+    sales_tax = subtotal * tax_rate
+
+    grand_total = subtotal + sales_tax
+
+    subtotal = round(subtotal, 2)
+    sales_tax = round(sales_tax, 2)
+    grand_total = round(grand_total, 2)
+
+    return subtotal, sales_tax, grand_total
+
+subtotal = 100.0
+tax_rate = 0.08
+subtotal, sales_tax, grand_total = calculate_totals(subtotal, tax_rate)
+print("Subtotal:", subtotal)
+print("Sales Tax:", sales_tax)
+print("Grand Total:", grand_total)
+
+# Jay's Code end ====================================================================================================
+
+
+# Clay's Code start =================================================================================================
 def payment_type():
     payment = input("Select a payment type: cash, credit, check ")
     while True:
@@ -82,21 +139,4 @@ def payment_type():
             break
         else:
             payment = input("Invalid response. Please enter: 'cash', 'credit', or 'check'")
-# Jay's Code ================================================================================================================================
-            def calculate_totals(subtotal, tax_rate):
-                sales_tax = subtotal * tax_rate
-
-                grand_total = subtotal + sales_tax
-
-                subtotal = round(subtotal, 2)
-                sales_tax = round(sales_tax, 2)
-                grand_total = round(grand_total, 2)
-
-                return subtotal, sales_tax, grand_total
-
-            subtotal = 100.0
-            tax_rate = 0.08
-            subtotal, sales_tax, grand_total = calculate_totals(subtotal, tax_rate)
-            print("Subtotal:", subtotal)
-            print("Sales Tax:", sales_tax)
-            print("Grand Total:", grand_total)
+# Clay's Code end =================================================================================================
