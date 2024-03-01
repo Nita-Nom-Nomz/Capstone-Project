@@ -1,3 +1,23 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 subtotal = 20
 def payment_type():
     payment = input("Select a payment type: cash, credit, check ")
