@@ -1,0 +1,136 @@
+shoes = [{"name": "Air Jordan 1", "category": "Sneaker", "description": "BK and WH High Top", "price": 125},
+         {"name": "Vans", "category": "Sneaker", "description": "BK and WH Sk8 High Top", "price": 65},
+         {"name": "Converse", "category": "Sneaker", "description": "BK and WH Chuck Taylor Low Top", "price": 60},
+         {"name": "Becca Flat", "category": "Dress Shoe", "description": "BK Pointed Toe Slingback Flat", "price": 120},
+         {"name": "Cole Haan ", "category": "Dress Shoe", "description": "BR Classic Penny Loafer", "price": 158},
+         {"name": "Gucci", "category": "Dress Shoe", "description": "BK Leather Lace-Up with Double G", "price": 890},
+         {"name": "Birkenstock", "category": "Sandal", "description": "BK Suede Leather", "price": 145},
+         {"name": "Crocs", "category": "Sandal", "description": "Hello Kitty Stomp Slide", "price": 50},
+         {"name": "Olukai ", "category": "Sandal", "description": "Dark Java Ohana", "price": 75},
+         {"name": "Orthofeet", "category": "Indoor Shoe", "description": "BK Louise Stretch Knit", "price": 90},
+         {"name": "Diodora", "category": "Indoor Shoe", "description": "WH, OR, and TUR Futsal Boots", "price": 115},
+         {"name": "Cloud Slides", "category": "Indoor Shoe", "description": "YL Original", "price": 27}]
+
+class Shoes:
+    def __init__(self, shoe):
+        self.shoe = shoe
+        self.subtotal = 0
+        self.grand_total = 0
+        self.sales_tax = 0
+        #shoe = str(input("Select a number from 1-12 to represent what shoe you would like: "))
+        while True:
+            try:
+                if 1 > int(shoe) or int(shoe) > 12:
+                    shoe = str(input("Please enter a valid number from 1-12: "))
+                else:
+                    break
+            except ValueError or TypeError:
+                shoe = str(input("Enter an integer between 1-12: "))
+        print(f"You selected {shoes[int(shoe)-1]['name']}")
+        total_shoes = []
+
+    def calculate_totals(self):
+        quantity = int(input("How many items would you like: "))
+        self.subtotal = shoes[int(self.shoe)-1]["price"] * quantity
+        tax_rate = 0.08
+        self.sales_tax = self.subtotal * tax_rate
+        self.grand_total = self.subtotal + self.sales_tax
+
+        print("Subtotal:", round(self.subtotal, 2))
+        print("Sales Tax:", round(self.sales_tax, 2))
+        print("Grand Total:", round(self.grand_total, 2))
+        return self.subtotal, self.sales_tax, self.grand_total
+
+    def payment_type(self):
+        tendered_amount = 0
+        check_number = 0
+        credit_card_number = 0
+        expiration = 0
+        cvv = 0
+        payment = input("Select a payment type: cash, credit, check ")
+        while True:
+            if payment.lower() == "cash":
+                tendered_amount = float(input("Enter amount of cash: "))
+                while True:
+                    if tendered_amount < self.grand_total:
+                        tendered_amount = float(input("Please enter a sufficient amount of cash: "))
+                    else:
+                        print(f"Your change is {tendered_amount - self.grand_total}")
+                        break
+                break
+            elif payment.lower() == "check":
+                check_number = input("Please enter your check number: ")
+                while True:
+                    if len(check_number) < 3 or len(check_number) > 4:
+                        check_number = input("Invalid number. Your check number should be 3-4 digits long. Please reenter: ")
+                    else:
+                        break
+                break
+            elif payment.lower() == "credit":
+                credit_card_number = str(input("Please enter your credit card number (no spaces): "))
+                while True:
+                    try:
+                        if len(credit_card_number) != 16:
+                            credit_card_number = input("Invalid number. Please enter a 16 digit credit card number: ")
+                        elif int(credit_card_number) < 0 or int(credit_card_number) > 10 ** 16 - 1:
+                            credit_card_number = str(input("Please enter a better number: "))
+                        else:
+                            print(credit_card_number, "is your credit card number")
+                            break
+                    except ValueError or TypeError:
+                        credit_card_number = str(input("Please try again: "))
+                expiration = str(input("Please enter your card's expiration date (mmyy): "))
+                while True:
+                    try:
+                        if len(expiration) != 4:
+                            expiration = str(input("Invalid response. Please enter your card's expiration date in the correct"
+                                           " format (mmyy)"))
+                        elif int(expiration[0]) > 1 or (int(expiration[2]) != 2 & int(expiration[2]) != 3):
+                            expiration = str(input("Invalid response. Please enter again the card's expiration date: "))
+                        elif int(expiration[0]) == int(expiration[1]) == 0 or (int(expiration[0]) == 1 and int(expiration[1]) > 2):
+                            expiration = str(input("Invalid response. Please enter a valid month: "))
+                        elif int(expiration[2]) == 2 and int(expiration[3]) < 4:
+                            expiration = str(input("Invalid response. Please enter a valid year: "))
+                        else:
+                            print(f"{expiration[0:2]}/{expiration[2:4]} is your expiration date")
+                            break
+                    except ValueError or TypeError:
+                        expiration = str("Reenter your expiration date: ")
+                cvv = str(input("Please enter your card's CVV number: "))
+                while True:
+                    try:
+                        if len(cvv) != 3:
+                            cvv = input("You must enter a 3-digit number: ")
+                        elif int(cvv) < 0 or int(cvv) > 999:
+                            cvv = input("Invalid number. Please reenter your cvv number: ")
+                        else:
+                            print(cvv, "is your cvv number")
+                            break
+                    except ValueError or TypeError:
+                        cvv = input("You must enter a 3-digit number: ")
+                break
+            else:
+                payment = input("Invalid response. Please enter: 'cash', 'credit', or 'check'")
+        return tendered_amount, check_number, credit_card_number, expiration, cvv
+
+print("Welcome to 'The Shoe Store'!")
+print("Here is our menu!")
+for n in shoes:
+    print(f"name: {n['name']}, category: {n['category']}, description: {n['description']}, price: {n['price']}")
+shoe = str(input("Select a number from 1-12 to represent what shoe you would like: "))
+
+s1 = Shoes(shoe)
+s1.calculate_totals()
+s1.payment_type()
+
+again = input("Would you like another shoe? (y/n)")
+
+while True:
+    if again.lower() == "y":
+        shoe = str(input("Select a number from 1-12 to represent what shoe you would like: "))
+        s1 = Shoes(shoe)
+        s1.calculate_totals()
+        s1.payment_type()
+    else:
+        print("Thank you for stopping by!")
+        break
