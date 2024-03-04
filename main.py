@@ -140,3 +140,106 @@ def payment_type():
         else:
             payment = input("Invalid response. Please enter: 'cash', 'credit', or 'check'")
 # Clay's Code end =================================================================================================
+
+
+"""
+Redid the code with a class base
+class Product:
+    def __init__(self, name, category, description, price):
+        self.name = name
+        self.category = category
+        self.description = description
+        self.price = price
+
+    def __str__(self):
+        return f"{self.name} - {self.category} - {self.description} - ${self.price:.2f}"
+
+class CashRegister:
+    def __init__(self):
+        self.products = [Product(**shoe) for shoe in shoes]
+        self.cart = []
+
+    def display_menu(self):
+        print("Welcome to the Self-Service Terminal!")
+        print("Menu:")
+        for i, product in enumerate(self.products, 1):
+            print(f"{i}. {product}")
+
+    def add_to_cart(self, item_number, quantity):
+        product = self.products[item_number - 1]
+        self.cart.append((product, quantity))
+        print(f"Added {quantity} {product.name}(s) to the cart.")
+
+    def calculate_totals(self, tax_rate):
+        subtotal = sum(product.price * quantity for product, quantity in self.cart)
+        sales_tax = subtotal * tax_rate
+        grand_total = subtotal + sales_tax
+        return subtotal, sales_tax, grand_total
+
+    def checkout(self, tax_rate):
+        subtotal, sales_tax, grand_total = self.calculate_totals(tax_rate)
+
+        print("\nReceipt:")
+        print("Items:")
+        for product, quantity in self.cart:
+            print(f"{product.name}: {quantity} x ${product.price:.2f} = ${product.price * quantity:.2f}")
+        print(f"\nSubtotal: ${subtotal:.2f}")
+        print(f"Sales Tax: ${sales_tax:.2f}")
+        print(f"Grand Total: ${grand_total:.2f}")
+
+        payment_type = input("\nChoose payment type - (cash / credit / check): ").lower()
+        if payment_type == 'cash':
+            amount_tendered = float(input("Enter amount tendered: $"))
+            change = amount_tendered - grand_total
+            print(f"Change: ${change:.2f}")
+        elif payment_type == 'credit':
+            card_number = input("Enter credit card number: ")
+            expiration_date = input("Enter expiration date (MM/YY): ")
+            cvv = input("Enter CVV: ")
+            print("Payment successful with credit card.")
+        elif payment_type == 'check':
+            check_number = input("Enter check number: ")
+            print("Payment successful with check.")
+        else:
+            print("Invalid payment type.")
+
+        self.cart = []
+
+    def start(self):
+        while True:
+            self.display_menu()
+            choice = input("\nEnter item number to add to cart or 'checkout' to complete the purchase: ")
+            if choice.lower() == 'checkout':
+                tax_rate = 0.08  # Example tax rate
+                self.checkout(tax_rate)
+            else:
+                try:
+                    item_number = int(choice)
+                    if 1 <= item_number <= len(self.products):
+                        quantity = int(input("Enter quantity: "))
+                        self.add_to_cart(item_number, quantity)
+                    else:
+                        print("Invalid item number. Please try again.")
+                except ValueError:
+                    print("Invalid input. Please enter a valid item number or 'checkout'.")
+
+# List of products
+shoes = [
+    {"name": "Air Jordan 1", "category": "Sneaker", "description": "BK and WH High Top", "price": 125},
+    {"name": "Vans", "category": "Sneaker", "description": "BK and WH Sk8 High Top", "price": 65},
+    {"name": "Converse", "category": "Sneaker", "description": "BK and WH Chuck Taylor Low Top", "price": 60},
+    {"name": "Becca Flat", "category": "Dress Shoe", "description": "BK Pointed Toe Slingback Flat", "price": 120},
+    {"name": "Cole Haan ", "category": "Dress Shoe", "description": "BR Classic Penny Loafer", "price": 158},
+    {"name": "Gucci", "category": "Dress Shoe", "description": "BK Leather Lace-Up with Double G", "price": 890},
+    {"name": "Birkenstock", "category": "Sandal", "description": "BK Suede Leather", "price": 145},
+    {"name": "Crocs", "category": "Sandal", "description": "Hello Kitty Stomp Slide", "price": 50},
+    {"name": "Olukai ", "category": "Sandal", "description": "Dark Java Ohana", "price": 75},
+    {"name": "Orthofeet", "category": "Indoor Shoe", "description": "BK Louise Stretch Knit", "price": 90},
+    {"name": "Diodora", "category": "Indoor Shoe", "description": "WH, OR, and TUR Futsal Boots", "price": 115},
+    {"name": "Cloud Slides", "category": "Indoor Shoe", "description": "YL Original", "price": 27}
+]
+
+
+register = CashRegister()
+register.start()
+"""
